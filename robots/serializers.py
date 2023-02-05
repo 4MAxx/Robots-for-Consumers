@@ -1,16 +1,7 @@
 from rest_framework import serializers
 
 from robots.models import Robot
-
-
-def get_valid_models_list():
-    ''' Список производимых моделей можно получать откуда угодно'''
-    AVAILABLE_MODELS = ['R1', 'R2', 'R5', 'S1', 'S2', 'S3']
-    return AVAILABLE_MODELS
-
-
-def valid_model(model):
-    return model in get_valid_models_list()
+from robots.services import is_valid_robot_model
 
 
 class RobotSerializer(serializers.ModelSerializer):
@@ -27,7 +18,7 @@ class RobotSerializer(serializers.ModelSerializer):
         ]
 
     def validate_model(self, value):
-        if not valid_model(value):
+        if not is_valid_robot_model(value):
             raise serializers.ValidationError('Такой модели в системе не существует!')
         return value
 
