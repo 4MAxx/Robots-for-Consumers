@@ -29,5 +29,5 @@ class OrderSerializer(serializers.ModelSerializer):
             return Order.objects.create(**validated_data)
         else:
             order = Order.objects.create(**validated_data)
-            create_pending_order(order.pk)
+            create_pending_order(order.pk, order.robot_serial)
             return order

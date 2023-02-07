@@ -11,3 +11,4 @@ class Order(models.Model):
 class PendingOrder(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE)
     is_active = models.BooleanField(default=True)
+    robot_serial = models.CharField(max_length=5, blank=False, null=False)
