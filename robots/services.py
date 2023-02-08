@@ -1,3 +1,5 @@
+from robots.models import Robot
+
 
 def get_valid_robot_models():
     ''' Список производимых моделей можно получать откуда угодно'''
@@ -7,3 +9,7 @@ def get_valid_robot_models():
 
 def is_valid_robot_model(model):
     return model in get_valid_robot_models()
+
+
+def is_robot_in_stock(robot_serial):
+    return Robot.objects.filter(serial=robot_serial).exists()
