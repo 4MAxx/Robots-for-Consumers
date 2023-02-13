@@ -5,6 +5,6 @@ from robots.views import create_one_robot
 
 
 urlpatterns = [
-    path('robots/report/xlsx/last_week', make_week_report_to_xlsx),
-    path('robots/one', create_one_robot),
+    path('report/xlsx/last_week', make_week_report_to_xlsx),
+    path('one', create_one_robot),
 ]
